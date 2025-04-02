@@ -28,13 +28,13 @@ class SaleOrder(models.Model):
         compute="_compute_discount_total",
         name="Subtotal Without Discount",
         currency_field="currency_id",
-        store=True,
+        # store=True,
     )
     price_total_no_discount = fields.Monetary(
         compute="_compute_discount_total",
         name="Total Without Discount",
         currency_field="currency_id",
-        store=True,
+        # store=True,
     )
 
     @api.model
