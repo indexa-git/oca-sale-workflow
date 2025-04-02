@@ -50,10 +50,8 @@ class SaleOrder(models.Model):
     def _compute_discount_total(self):
         for order in self:
             discount_total = sum(order.order_line.mapped("discount_total"))
-            discount_subtotal = sum(order.order_line.mapped("discount_subtotal"))
-            price_subtotal_no_discount = sum(
-                order.order_line.mapped("price_subtotal_no_discount")
-            )
+            discount_subtotal = 0
+            price_subtotal_no_discount = 0
             price_total_no_discount = sum(
                 order.order_line.mapped("price_total_no_discount")
             )
