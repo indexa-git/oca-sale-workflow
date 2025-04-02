@@ -14,14 +14,14 @@ class SaleOrderLine(models.Model):
     )
     discount_subtotal = fields.Monetary(
         compute="_compute_amount",
-        store=True,
-        precompute=True,
+        # store=True,
+        # precompute=True,
     )
     price_subtotal_no_discount = fields.Monetary(
         compute="_compute_amount",
         string="Subtotal Without Discount",
-        store=True,
-        precompute=True,
+        # store=True,
+        # precompute=True,
     )
     price_total_no_discount = fields.Monetary(
         compute="_compute_amount",
