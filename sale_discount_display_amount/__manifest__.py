@@ -16,6 +16,4 @@
         "views/sale_view.xml",
         "report/sale_report_template.xml",
     ],
-    # "pre_init_hook": "pre_init_hook",
-    # "post_init_hook": "post_init_hook",
 }
