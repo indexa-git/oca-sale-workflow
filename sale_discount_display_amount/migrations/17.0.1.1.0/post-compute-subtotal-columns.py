@@ -18,7 +18,7 @@ def migrate(cr, version):
         WHERE id IN (
             SELECT id FROM sale_order_line 
             WHERE discount = 0.0
-            LIMIT 1000
+            LIMIT 10000
         )
     """)
     while cr.rowcount > 0:
@@ -29,7 +29,7 @@ def migrate(cr, version):
                 SELECT id FROM sale_order_line 
                 WHERE discount = 0.0
                 AND price_subtotal_no_discount IS NULL
-                LIMIT 1000
+                LIMIT 10000
             )
         """)
 
@@ -41,7 +41,7 @@ def migrate(cr, version):
         WHERE id IN (
             SELECT id FROM sale_order
             WHERE price_subtotal_no_discount IS NULL
-            LIMIT 1000
+            LIMIT 10000
         )
     """)
     while cr.rowcount > 0:
@@ -51,13 +51,13 @@ def migrate(cr, version):
             WHERE id IN (
                 SELECT id FROM sale_order
                 WHERE price_subtotal_no_discount IS NULL
-                LIMIT 1000
+                LIMIT 10000
             )
         """)
 
     # Process orders with discounts in batches
     _logger.info("Processing orders with discounts...")
-    batch_size = 100
+    batch_size = 1000
     cr.execute("SELECT DISTINCT order_id FROM sale_order_line WHERE discount > 0.0")
     all_order_ids = [r[0] for r in cr.fetchall()]
 
